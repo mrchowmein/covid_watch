@@ -3,7 +3,13 @@ import requests
 
 """"""
 def ingest_coviddata(date_str : str, path : str):
-    """Downloads global covid19 daily data with date and path string. Returns a dataframe of csv"""
+    """Downloads global covid19 daily data with the matching date and path string.
+    then Returns a dataframe of csv
+
+     :param date_str: date of csv file
+     :param path: string url of the directory of the csv files
+     :return: a dataframe
+     """
 
     url = f"{path}{date_str}.csv"
     try:
@@ -16,7 +22,12 @@ def ingest_coviddata(date_str : str, path : str):
 
 
 def csv_to_us_df(date_str : str):
-    """Function filters covid19 dataframe to US only using date. Returns a dataframe"""
+    """Function filters covid19 dataframe to US only using date.
+
+    :param date_str: date of csv file
+    :return: a dataframe
+
+    """
     try:
         df = pd.read_csv(f'data/{date_str}.csv', header=0)
         us_df = df[(df.Country_Region == 'US')]
