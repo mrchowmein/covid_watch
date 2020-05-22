@@ -10,5 +10,8 @@ open(f'{record_date}.csv', 'wb').write(r.content)
 
 df = pd.read_csv(f'{record_date}.csv', header=0)
 
-print(df.groupby('Country_Region').agg({'Deaths':['sum', 'max']}))
+#print(df.groupby('Country_Region').agg({'Deaths':['sum', 'max']}))
 
+us_df = df[(df.Country_Region == 'US')]
+print(us_df)
+#print(us_df.groupby('Province_State').agg({'Deaths':['sum']}))
